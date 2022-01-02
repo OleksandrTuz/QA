@@ -1,0 +1,239 @@
+{
+	"info": {
+		"_postman_id": "995f76ce-0eda-4113-9775-2ca240d978fd",
+		"name": "MyPetCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AddNewPet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Barsik\",\r\n    \"photoUrls\": [\r\n        \"This is what a Barsik looks like\",\r\n        \"https://drive.google.com/open?id=11mhPbtAuzGEzhgv26S-3eQTJW09DZmn3&authuser=tuznexon%40gmail.com&usp=drive_fs\"\r\n    ],\r\n    \"id\": -43015741,\r\n    \"category\": {\r\n        \"id\": 5460651,\r\n        \"name\": \"cat\"\r\n    },\r\n    \"tags\": [\r\n        {\r\n            \"id\": 70829873,\r\n            \"name\": \"quis sunt\"\r\n        },\r\n        {\r\n            \"id\": 76543187,\r\n            \"name\": \"pariatur ex dolor \"\r\n        }\r\n    ],\r\n    \"status\": \"sold\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pet",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindPet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "<API Key>",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "api_key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/pet/{{cat}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						"{{cat}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdatePet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 9223372000001090663,\r\n    \"category\": {\r\n        \"id\": 5460651000,\r\n        \"name\": \"cats\"\r\n    },\r\n    \"name\": \"Barsik_2.0\",\r\n    \"photoUrls\": [\r\n        \"This is what a Barsik_2.0 looks like\",\r\n        \"https://drive.google.com/open?id=11mhPbtAuzGEzhgv26S-3eQTJW09DZmn3&authuser=tuznexon%40gmail.com&usp=drive_fs\"\r\n    ],\r\n    \"tags\": [\r\n        {\r\n            \"id\": 70829873,\r\n            \"name\": \"quis sunt\"\r\n        },\r\n        {\r\n            \"id\": 76543187,\r\n            \"name\": \"pariatur ex dolor \"\r\n        }\r\n    ],\r\n    \"status\": \"sold\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pet",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeletePet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "api_key",
+						"value": "dolor eu",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/pet/9223372000001090663",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						"9223372000001090663"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://petstore.swagger.io/v2",
+			"type": "string"
+		},
+		{
+			"key": "cat",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
